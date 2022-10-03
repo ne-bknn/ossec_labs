@@ -1,0 +1,281 @@
+ 4579  asciinema rec
+ 4580  docker run -it rockylinux:9 bash
+ 4581  man cal
+ 4582  cal -3
+ 4583  history | tail
+ 4584  clear
+ 4585  ls
+ 4586  pwd
+ 4587  cd /
+ 4588  cd ..
+ 4589  file ..
+ 4590  file .
+ 4591  # because we are at the root dir
+ 4592  ls
+ 4593  ls /var
+ 4594  cd -
+ 4595  z 01_lab
+ 4596  ls
+ 4597  cd ..
+ 4598  pwd
+ 4599  ls
+ 4600  cd ~/ | head
+ 4601  # oops
+ 4602  ls ~ | head
+ 4603  ls -la ~ | head
+ 4604  ls -la ~ | head | awk '{print $3,$7}'
+ 4605  # lets pretend $(pwd) is my home dir
+ 4606  mkdir fruits
+ 4607  cd /
+ 4608  mkdir ~/Projects/ossec_labs/01_lab/animals
+ 4609  touch /tmp/temp
+ 4610  z fruits
+ 4611  cd ~/Projects/ossec_labs/fruits
+ 4612  ls
+ 4613  cd ..
+ 4614  ls
+ 4615  mv fruits 01_lab
+ 4616  cd 01_lab
+ 4617  ls
+ 4618  cd fruits
+ 4619  ls
+ 4620  touch apple banana pineaple lion
+ 4621  touch ../animals/cat.txt ../animals/elephant.txt ../animals/dog.txt
+ 4622  ls
+ 4623  ls -l | grep apple | awk '{print $4,$5,$6}'
+ 4624  # my ls isnt actually ls, it is
+ 4625  which ls
+ 4626  # exa - so the output may differ slightly
+ 4627  ls b*
+ 4628  ls *a
+ 4629  ls [bi]*
+ 4630  ls b* i*
+ 4631  cp /etc/passwd .
+ 4632  ls
+ 4633  cat /etc/issue
+ 4634  cp /etc/issue apple
+ 4635  cat apple
+ 4636  diff apple /etc/issue
+ 4637  mv lion ../animals
+ 4638  mv pineaple pineapple
+ 4639  wc -l /etc/passwd
+ 4640  cd ..
+ 4641  ln -s /etc/passwd passwd_link
+ 4642  ln ~/.zsh_history history_hard
+ 4643  ls -l ~/ | grep zsh_history
+ 4644  ls -l ~ | grep zsh_history
+ 4645  ls -al ~ | grep zsh_history
+ 4646  /usr/bin/ls -al ~ | grep zsh_history
+ 4647  # second field is 2
+ 4648  /usr/bin/ls -l
+ 4649  rm fruits/apple
+ 4650  mkdir rmme
+ 4651  rmdir rmme
+ 4652  rmdir fruits
+ 4653  # rmdir can delete empty directories only
+ 4654  rm -rf fruits
+ 4655  clear
+ 4656  # for init.d i suppose i need to switch to rocky
+ 4657  docker run -it rockylinux:9 bash # why rockylinux does not have latest tag on dockerhub lol?
+ 4658  # /etc/init.d is something like /etc/systemd innit?
+ 4659  # pun not intended
+ 4660  cd /etc/systemd
+ 4661  ls
+ 4662  cd .
+ 4663  cd ..
+ 4664  cd ~/Projects/ossec_labs/01_lab
+ 4665  ls
+ 4666  cp /etc/systemd .
+ 4667  cp -r /etc/systemd .
+ 4668  ls
+ 4669  cd systemd
+ 4670  ls
+ 4671  tree 3
+ 4672  cd ..
+ 4673  ls
+ 4674  rm -rf systemd
+ 4675  ls
+ 4676  cat /etc/passwd
+ 4677  cat /etc/passwd | awk '{print $1}'
+ 4678  cat /etc/passwd | awk -F: '{print $1}'
+ 4679  cat /etc/passwd | awk -F: '{print $1}' | sort
+ 4680  cut -d: -f1,3,4 /etc/passwd | column -ts: | less
+ 4681  cut -d: -f1,3,4 /etc/passwd
+ 4682  # cut "cuts" input by separator specified by -d (: in our case) and outputs specific columns. column outputs everything as pretty-printed table (-t) and we also specify field separator (-s:). less is a pager.
+ 4683  cat /etc/passwd
+ 4684  man passwd
+ 4685  man 2 passwd
+ 4686  man 1 passwd
+ 4687  man 3 passwd
+ 4688  # i do not remember section
+ 4689  man 4 passwd
+ 4690  man 5 passwd
+ 4691  head /etc/passwd
+ 4692  # third field is uid
+ 4693  cut -d: -f1,3,4 /etc/passwd
+ 4694  head /etc/passwd
+ 4695  # we get uid in output from the git go
+ 4696  grep :/bin/bash /etc/passwd | wc -l
+ 4697  grep :/bin/zsh /etc/passwd | wc -l
+ 4698  # it's me
+ 4699  cat /etc/passwd
+ 4700  # no one is using bash and only my user is using zsh, lets filter by username and search for "systemd"
+ 4701  grep -e "systemd-.+" /etc/passwd
+ 4702  grep -E "systemd-.+" /etc/passwd
+ 4703  grep -E "systemd-.+:" /etc/passwd
+ 4704  #grep -E "systemd-.+:" /etc/passwd
+ 4705  grep -E "systemd-.+:" /etc/passwd | awk -F '{print $1}'
+ 4706  grep -E "systemd-.+:" /etc/passwd | awk -F: '{print $1}'
+ 4707  grep -E "systemd-.+:" /etc/passwd | awk -F: '{print $1}' | sort | rev
+ 4708  #
+ 4709  # oopsie
+ 4710  grep -E "systemd-.+:" /etc/passwd | awk -F: '{print $1}' | sort -r
+ 4711  grep -E "systemd-.+:" /etc/passwd | awk -F: '{print $1}' | sort
+ 4712  grep -E "systemd-.+:" /etc/passwd | awk -F: '{print $1}' | sort -r
+ 4713  # i need to think for a bit
+ 4714  pacman -Qi
+ 4715  pacman -Qq
+ 4716  pacman -Qi
+ 4717  pacman -Qi | grep -E '(Name|Size)'
+ 4718  pacman -Qi | rep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*([A-Za-z0-9\-_]+)/\2/g'
+ 4719  pacman -Qi | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*([A-Za-z0-9\-_]+)/\2/g'
+ 4720  pacman -Qi | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*([A-Za-z0-9\-_]+)/\2/g' | perl -pe 's/(Installed Size)\s*:\s*(\S*)/\2/g'
+ 4721  pacman -Qi | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*(\S+)/\2/g' | perl -pe 's/(Installed Size)\s*:\s*(\S*)/\2/g'
+ 4722  pacman -Qi | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*(\S+)/\2/g' | perl -pe 's/(Installed Size)\s*:\s*(\S*)/\2/g' | paste -sd ' \n'
+ 4723  pacman -Qi | grep -v "nternationalized Domain Names in Applications (IDNA)" | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*(\S+)/\2/g' | perl -pe 's/(Installed Size)\s*:\s*(\S*)/\2/g' | paste -sd ' \n'
+ 4724  # nice
+ 4725  pacman -Qi | grep -v "nternationalized Domain Names in Applications (IDNA)" | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*(\S+)/\2/g' | perl -pe 's/(Installed Size)\s*:\s*(\S*)/\2/g' | paste -sd ' \n' | sort -h
+ 4726  pacman -Qi | grep -v "nternationalized Domain Names in Applications (IDNA)" | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*(\S+)/\2/g' | perl -pe 's/(Installed Size)\s*:\s*(\S*)/\2/g' | paste -sd ' \n' | awk '{print $2,$3,$1}'
+ 4727  pacman -Qi | grep -v "nternationalized Domain Names in Applications (IDNA)" | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*(\S+)/\2/g' | perl -pe 's/(Installed Size)\s*:\s*(\S*)/\2/g' | paste -sd ' \n' | awk '{print $2,$3,$1}' | sort -h
+ 4728  # tratatat tutututu
+ 4729  pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}' | sort -h
+ 4730  pacman -Qi | awk '/^Name/{name=$3} /^Installed Size/{print $4$5, name}'
+ 4731  # oh i got it i think
+ 4732  pacman -Qi | grep -v "nternationalized Domain Names in Applications (IDNA)" | grep -E '(Name|Size)' | perl -pe 's/(Name)\s*:\s*(\S+)/\2/g' | perl -pe 's/(Installed Size)\s*:\s*(\S*)/\2/g' | paste -sd ' \n' | awk '{print $2$3,$1}' | sort -h
+ 4733  # yay
+ 4734  pacman -Ql man-db
+ 4735  pacman -Ql man-db | xargs -l du
+ 4736  pacman -Ql man-db | xargs -l du 2> /dev/null
+ 4737  pacman -Ql man-db | xargs -l du 2> /dev/null | sort -n
+ 4738  man top
+ 4739  top -b -n1 | sort
+ 4740  top -b -n1 | grep -v '%Cpu'
+ 4741  top -b -n1 | grep -v '%Cpu'
+ 4742  top -b -n1 | grep -v '%Cpu' | less
+ 4743  top -b -n1 | grep -v '%Cpu' | grep -v 'load average' | less
+ 4744  top -b -n1 | grep -v '%Cpu' | grep -v 'load average' | grep -v 'MiB Mem' | grep -v 'MiB Swap' | less
+ 4745  top -b -n1 | grep -v '%Cpu' | less
+ 4746  top -b -n1 | grep -v '%Cpu' | sed -e '1,4d'
+ 4747  top -b -n1 | grep -v '%Cpu' | sed -e '1,4d' | less
+ 4748  top -b -n1 | grep -v '%Cpu' | sed -e '1,5d' | less
+ 4749  man sort
+ 4750  top -b -n1 | grep -v '%Cpu' | sed -e '1,5d' | sort -k11 | less
+ 4751  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k11 | less
+ 4752  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k10 | less
+ 4753  man sort
+ 4754  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k1
+ 4755  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k0
+ 4756  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k1
+ 4757  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k1 -n
+ 4758  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k12
+ 4759  # alright it was field numero 12
+ 4760  top -b -n1 | grep -v '%Cpu' | sed -e '1,5d' | less
+ 4761  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | awk '{print $12,$5}'
+ 4762  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d'
+ 4763  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k12 | cut -f 12-,5
+ 4764  top -b -n1 | grep -v '%Cpu' | sed -e '1,6d' | sort -k12 | cut -f 12-
+ 4765  # alright alright i messed up a bit, lets use command from lab spec
+ 4766  top -b -n1 | tail -n+8 | cut -c7-  | tr -s ' ' '\t' | cut -f11,5
+ 4767  top -b -n1 | tail -n+8 | cut -c7-  | tr -s ' ' '\t' | cut -f12,5
+ 4768  top -b -n1 | tail -n+8 | cut -c7-  | tr -s ' ' '\t' | cut -f12-,5
+ 4769  # looks messy, but almost correct
+ 4770  man sort
+ 4771  cat /etc/passwd | sort -t: -k1
+ 4772  cat /etc/passwd | sort -t: -k1 | tr ":" " "
+ 4773  cat /etc/passwd | sort -t: -k1 | tr ":" " " | awk '{print $1,$6}'
+ 4774  # markdown is a bit off on task $4.11 jfyi
+ 4775  cd /usr/share/doc/
+ 4776  ls | grep git
+ 4777  cd libgit2/
+ 4778  ls
+ 4779  cat README.md
+ 4780  clear
+ 4781  cd ..
+ 4782  ls
+ 4783  cd pcre2
+ 4784  ls
+ 4785  cat pcre2.txt
+ 4786  # looks good enough to replace git man
+ 4787  man git
+ 4788  # alright, alright
+ 4789  cd /usr/share/man
+ 4790  ls
+ 4791  man git
+ 4792  cd man1
+ 4793  ls
+ 4794  ls | grep git
+ 4795  # uhhh
+ 4796  gunzip git.1.gz
+ 4797  cp git.1.gz ~/Projects/ossec_labs/01_lab
+ 4798  cd $_
+ 4799  ls
+ 4800  extract git.1.gz
+ 4801  ls
+ 4802  vim git.1
+ 4803  # DUH
+ 4804  cd /usr/share/doc/
+ 4805  ls
+ 4806  cd pcre
+ 4807  ls
+ 4808  cat pcre.txt
+ 4809  cat pcre.txt | tr ' ' '\012'
+ 4810  # makes sense
+ 4811  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]'
+ 4812  # makes sense
+ 4813  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]'
+ 4814  # didnt now tr has punct built in
+ 4815  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]'
+ 4816  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]' | sort | uniq
+ 4817  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]' | sort | uniq -c
+ 4818  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]' | sort | uniq -c | sort -rn
+ 4819  man sort
+ 4820  # makes sense
+ 4821  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]' | sort | uniq -c | sort -rn | head -5
+ 4822  # you know i have similar script to collect shell stats
+ 4823  # not in this history, wait a bit
+ 4824  history | awk '{print $2}' | sort | uniq -c | sort -n -k1 -r | head
+ 4825  cat user-manual.txt | tr -cs '[:alpha:]' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -rn | head -5
+ 4826  cat pcre.txt | tr -cs '[:alpha:]' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -rn | head -5
+ 4827  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]' | sort | uniq -c | sort -rn | head -5
+ 4828  man tr
+ 4829  cat pcre.txt | tr -cs '[:alpha:]' '\n'
+ 4830  cat pcre.txt | tr ' ' '\012' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | grep -v '[^a-z]' | sort | uniq -c | sort -rn | head -5
+ 4831  cat pcre.txt | tr -cs '[:alpha:]' '\n' | tr '[:upper:]' '[:lower:]' | sort | uniq -c | sort -rn | less
+ 4832  # currently i do not have a decisive answer to why they are different, ill experiment later
+ 4833  tr '[:lower:]' '[:upper:]' < user-manual.txt |  tr -d '[:punct:] \n\t' | fold -w1 | sort | uniq -c | sort -rn | head -5
+ 4834  tr '[:lower:]' '[:upper:]' < pcre.txt |  tr -d '[:punct:] \n\t' | fold -w1 | sort | uniq -c | sort -rn | head -5
+ 4835  # what is fold
+ 4836  man fold
+ 4837  # reasonable
+ 4838  tr -cs '[:alpha:]' '\n' < user-manual.txt | less | grep -E ........ | sort | uniq -c | sort -rn | head
+ 4839  tr -cs '[:alpha:]' '\n' < pcre.txt | less | grep -E ........ | sort | uniq -c | sort -rn | head
+ 4840  ping ya.ru
+ 4841  history | grep 'ping ya.ru'
+ 4842  history | grep 'ping' | wc -l
+ 4843  curl wttr.in
+ 4844  # i am not in pyatigorsk
+ 4845  hostname -I
+ 4846  hostname
+ 4847  curl ifconfig.me
+ 4848  curl ipconfig.me
+ 4849  curl ipconfig.me -L
+ 4850  # yep, ifconfig is easier
+ 4851  # i do not like wget
+ 4852  cd ~/Projects/ossec_labs/01_lab
+ 4853  curl curl https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README-ru.md -o README-ru.md
+ 4854  curl https://raw.githubusercontent.com/jlevy/the-art-of-command-line/master/README-ru.md -o README-ru.md
+ 4855  ls
+ 4856  less README-ru.md
+ 4857  sudo id
+ 4858  sudo less /var/log/messages
+ 4859  # i do not remember root password on my machine lol
