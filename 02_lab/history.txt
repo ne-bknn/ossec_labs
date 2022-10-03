@@ -1,0 +1,70 @@
+ 4898  mkdir 02_lab
+ 4899  cd 02_lab
+ 4900  ls
+ 4901  asciinema
+ 4902  asciinema rec
+ 4903  clear
+ 4904  # lets assume $(pwd) is a home dir
+ 4905  mkdir test
+ 4906  cd test
+ 4907  ls
+ 4908  touch file
+ 4909  ls -la
+ 4910  # rw for owner (that's me :) ), read for group and others
+ 4911  chmod -rwx file
+ 4912  ls
+ 4913  ls -la
+ 4914  cat file
+ 4915  # oh no
+ 4916  echo -ne "test" > file
+ 4917  chmod u+w file
+ 4918  ls -la
+ 4919  cat file
+ 4920  echo -ne "test" > file
+ 4921  cat file
+ 4922  chmod g+r file
+ 4923  ls -la
+ 4924  cat file
+ 4925  chmod u+r file
+ 4926  ls -la
+ 4927  cat file
+ 4928  mkdir dir
+ 4929  echo -ne "file 2" > dir/new_file
+ 4930  chmod a-x dir
+ 4931  ls -la
+ 4932  ls dir
+ 4933  rm dir/new_file
+ 4934  cd dir
+ 4935  ls
+ 4936  # hahah dir has no x bit but i have tab completion why?
+ 4937  chown root:root file
+ 4938  umask 777
+ 4939  touch file1
+ 4940  ls -la
+ 4941  umask 000
+ 4942  touch file2
+ 4943  ls -la
+ 4944  # changing umask broke my z directory changer..;
+ 4945  rm ~/.z
+ 4946  ls
+ 4947  # what was my umask?
+ 4948  umask 022
+ 4949  touch a
+ 4950  ls
+ 4951  ls -la
+ 4952  # good
+ 4953  sudo su
+ 4954  cat file
+ 4955  sudo su
+ 4956  ls
+ 4957  cat file
+ 4958  ls -lR
+ 4959  # what was the permissions for dir?
+ 4960  sudo su
+ 4961  ls -lR
+ 4962  ls -lR > ls_output.txt
+ 4963  ls
+ 4964  cat ls_output.txt
+ 4965  /usr/bin/ls -lR > ls_output.txt
+ 4966  /usr/bin/ls -lR &> ls_output.txt
+ 4967  cat ls_output.txt

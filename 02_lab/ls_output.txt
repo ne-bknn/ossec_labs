@@ -1,0 +1,13 @@
+.:
+total 4
+-rw-r--r-- 1 ne_bknn ne_bknn  0 Oct  3 20:31 a
+drw-r--r-- 1 ne_bknn ne_bknn 16 Oct  3 20:29 dir
+-rw-r----- 1 root    ne_bknn  4 Oct  3 20:28 file
+---------- 1 ne_bknn ne_bknn  0 Oct  3 20:30 file1
+-rw-rw-rw- 1 ne_bknn ne_bknn  0 Oct  3 20:30 file2
+-rw-r--r-- 1 ne_bknn ne_bknn  0 Oct  3 20:34 ls_output.txt
+
+./dir:
+/usr/bin/ls: cannot access './dir/new_file': Permission denied
+total 0
+-????????? ? ? ? ?            ? new_file
