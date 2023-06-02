@@ -1,0 +1,5 @@
+[myrepo]
+name=my-repo
+baseurl=http://localhost/repo
+enabled=1
+gpgkey=http://localhost/repo/RPM-GPG-KEY-Timofey-Mischenko
